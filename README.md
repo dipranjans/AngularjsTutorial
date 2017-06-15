@@ -1,6 +1,6 @@
 # ProjectTodoList (angular1.x small test projects with routing and filters enabled)
 
-Create a todo application list which consists of the following tasks:
+Covers:
 =============================================================================
 1.Dashboard consist of serial, projectname, status( done or pending).
 2.On click of Projectname or entire row, it should take to a dashboard where it holds project information(Use routes to achieve this)
