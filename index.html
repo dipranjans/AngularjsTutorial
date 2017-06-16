@@ -5,80 +5,23 @@
 	<title>Welcome to dashboard</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.css">
-	<style>
-	span {margin:5px;}
-	</style>
- </head>
- <body>
-  
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-					<li><a href="#">About US</a></li>
-					<li><a href="#">Projects</a></li>
-                </ul>
-                <p class="nav navbar-text navbar-right">Hello, Ranjan</p>
-            </div>
-        </div>
-    </div>
-
-	<div ng-app="testApp">
-		<div ng-controller="myController">
-
-			<div class="container well mtp75">
-				<div class="row">
-					<span class="pull-left">
-						<button ng-click="reset()" class="btn btn-danger">Reset</button>
-					</span>
-					<span class="pull-left">
-						<input type="text" ng-model="search.$" class="form-control" placeholder="Search All" />
-					</span>
-				</div>				
-				<!--
-				<div class="row">
-					<div class="alert alert-warning">
-						<p>Sort key: {{sortKey}}</p>
-						<p>Reverse: {{reverse}}</p>
-						<p>Search String : {{search}}</p>
-					</div>
-				</div>
-				-->
-				
-				<br>
-			  <div class="row">				
-				<table cellpadding="10" cellspacing="10" border="0" class="table">
-					<tr>
-						<th>No.</th>
-						<th ng-click="sort('projectname')">ProjectName
-						<span class="glyphicon sort-icon" ng-show="sortKey=='projectname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						<th ng-click="sort('status')">Status
-						<span class="glyphicon sort-icon" ng-show="sortKey=='status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-					</tr>
-					<tr ng-repeat="project in projects|orderBy:sortKey:reverse|filter:search" ng-class="$even ? 'even-row' : 'odd-row'">
-						<td>{{$index+1}}</td>
-						<td>{{project.projectname}}</td>
-						<td>{{project.status}}</td>						
-					</tr>
-				</table>			
-				
-				</div> <!-- End OF Row -->
-			</div><!-- End OF Container -->
-		</div> <!-- End Of ng-controller -->
-	</div> <!-- End Of ng-app -->
-
+	<style>span {margin:5px;}</style>
 	
 	<script src="js/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+ </head>
+ <body ng-app="testApp">
+	
+	<!-- navigation start here -->
+	<div ng-include="'nav-bar.html'"></div>
+	<!-- navigation end here -->
+
+	<div class="container well mtp75">
+		<div ui-view></div>
+	</div><!-- End OF Container -->
+	
+	
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>	
 	<script src="js/app.js"></script>
 
  </body>

@@ -1,0 +1,32 @@
+<div ng-controller="myController">			
+	<div class="row">
+			<span class="pull-left">
+				<button ng-click="reset()" class="btn btn-danger">Reset</button>
+			</span>
+			<span class="pull-left">
+				<input type="text" ng-model="search.$" class="form-control" placeholder="Search All" />
+			</span>
+	</div>
+	<br>
+	<div class="row">				
+		<table cellpadding="10" cellspacing="10" border="0" class="table">
+			<tr>
+				<th>No.</th>
+				<th ng-click="sort('projectname')">ProjectName
+				<span class="glyphicon sort-icon" ng-show="sortKey=='projectname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th ng-click="sort('status')">Status
+				<span class="glyphicon sort-icon" ng-show="sortKey=='status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+			</tr>
+			<tr ng-repeat="project in projects|orderBy:sortKey:reverse|filter:search" ng-class="$even ? 'even-row' : 'odd-row'" >
+				<td><a ng-click="projectDetails(project)">{{$index+1}}</a></td>
+				<td><a ng-click="projectDetails(project)">{{project.projectname}}</a></td>
+				<td><a ng-click="projectDetails(project)">{{project.status}}</a></td>
+			</tr>
+		</table>
+	</div> <!-- End OF Row -->				
+</div> <!-- End OF Row -->				
+<style>.table td a {cursor:pointer;}</style>
+
+

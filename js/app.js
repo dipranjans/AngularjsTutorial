@@ -1,7 +1,22 @@
-var app = angular.module('testApp', []);
-//controller
-app.controller('myController', function($scope, $http) {	
+var app = angular.module('testApp', ['ui.router','ui.bootstrap']);
+//config for ui router
+app.config(function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider        
+        .state('home', {// HOME STATES
+            url: '/home',
+            templateUrl: 'partial-home.html'
+        })
+		.state('projects', {
+            url: '/projects',
+            templateUrl: 'projects.html'
+        })		
+});
 
+//controller
+app.controller('myController', function($scope,$http,$modal) {	
+	
 	//fetch json records of all projects
 	$http.get('js/projects.json')		
 		// binding the data to the $scope variable
@@ -20,8 +35,17 @@ app.controller('myController', function($scope, $http) {
 		}
 		
 		//reset of records
-		$scope.reset = function(){$scope.search = '';}
+		$scope.reset = function(){
+			$scope.search = '';
+		}
+		
+		$scope.projectDetails = function (project) {	
+			$modal.open({
+				templateUrl: 'projects-details.html',
+				controller: function($scope,$modalInstance) {
+					$scope.projectD=project.projectname;
+					$scope.projectS=project.status;
+				}				
+			});
+		}
 });
-
-
-
