@@ -1,4 +1,4 @@
-# Angularjs with routing and filters best examples easy to understand
+* Angularjs with routing and filters best examples easy to understand
 
 1. Dashboard consist of serial, projectname, status( done or pending).
 2. On click of Projectname or entire row, it should take to a dashboard where it holds project information(Use routes to achieve this)
